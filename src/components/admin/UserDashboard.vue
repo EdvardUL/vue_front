@@ -8,26 +8,49 @@
         Email: {{ data.Email }}
         Rating: {{ data.Rating }}
         <button @click="deleteItem(data.ID)">Delete</button>
-        <button @click="remakeItem(data.ID)">Update</button>
+        <button @click="activateComponent()">Update</button>
         <my-component v-if="isActive" :ID="data.ID"></my-component>
         </p>
       </li>
     </ul>
+    </div>
+    <div v-if="error">
+      <error-component :error="error" />
     </div>
   </template>
   
   <script>
   import axios from 'axios'
   import upduser from './UpdateUser.vue';
+  import ErrorComponent from './../ErrorComp.vue';
   export default {
   data() {
     return {
-      items: []
+      items: [],
+      isActive:false,
     };
   },
   components: {
-    'my-component': upduser
+    'my-component': upduser,
+     ErrorComponent
   },
+  methods: {
+  activateComponent() {
+      this.isActive = !this.isActive;
+  },
+  deleteItem(reqID) {
+    const formData = {
+      ID: reqID,
+    }
+    axios.post('http://localhost:8083/admin/dlt/user', formData)
+      .then(
+        location.reload()
+      )
+      .catch(error => {
+        this.error = error
+      })
+  },
+    },
   created() {
     const token = localStorage.getItem('token')
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`

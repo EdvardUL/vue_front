@@ -8,16 +8,24 @@
     <p v-text="message"></p>
     <a href="http://localhost:8082/db/InnowiseTaxi/logs">mongo logs</a>|
     <a href="http://localhost:3000/d/FDB061FMz/gin-application-metrics?orgId=1&refresh=5s">metrics</a>
+    <div v-if="error">
+      <error-component :error="error" />
+    </div>
   </template>
 <script>
 import axios from 'axios'
+import ErrorComponent from './../ErrorComp.vue';
 export default {
   data() {
     return {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    error: null
     }
+  },
+  components: {
+    ErrorComponent
   },
   methods: {
   submitForm() {
@@ -32,8 +40,7 @@ export default {
         localStorage.setItem('token', response.data)
       })
       .catch(error => {
-        console.log(error)
-        this.message = 'error!'
+        this.error = error
       })
   }
   }

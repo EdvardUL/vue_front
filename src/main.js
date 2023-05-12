@@ -1,30 +1,25 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import TestComp from './components/TestComp.vue'
-import HelloWorld from './components/HelloWorld.vue'
-import UserProfile from './components/UserProfile.vue'
-import AdminPage from './components/AdminPage.vue'
-import UserDashboard from './components/UserDashboard.vue'
-import OrderDashboard from './components/OrdersDashboard.vue'
-import DriverDashboard from './components/DriverDashboard.vue'
+import UserAuth from './components/user/UserAuth.vue'
+import UserProfile from './components/user/UserProfile.vue'
+import AdminPage from './components/admin/AdminPage.vue'
+import UserDashboard from './components/admin/UserDashboard.vue'
+import OrderDashboard from './components/admin/OrdersDashboard.vue'
+import DriverDashboard from './components/admin/DriverDashboard.vue'
 
 const router = createRouter({
     routes: [
           {
-            path: '/',
-            component: TestComp
-          },
-          {
-            path: '/home',
-            component: HelloWorld
+            path: '/user-auth',
+            component: UserAuth
           },
           {
             path: '/user',
             component: UserProfile
           },
           {
-            path: '/admin',
+            path: '/',
             component: AdminPage
           },
           {

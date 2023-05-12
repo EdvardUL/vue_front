@@ -6,10 +6,14 @@
       <input v-model="rating" type="rating" placeholder="rating">
       <button @click="submitForm()">Submit</button>
     </div>
+    <div v-if="error">
+      <error-component :error="error" />
+    </div>
   </template>
 
 <script>
 import axios from 'axios'
+import ErrorComponent from './../ErrorComp.vue';
 export default {
     props:{
         ID: Number
@@ -22,6 +26,9 @@ export default {
     message: '',
     rating:''
     }
+  },
+  components: {
+    ErrorComponent
   },
   methods: {
   submitForm() {

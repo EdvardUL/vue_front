@@ -15,24 +15,42 @@
       </li>
     </ul>
     </div>
+    <div v-if="error">
+      <error-component :error="error" />
+    </div>
   </template>
   
   <script>
   import upddriver from './UpdateDriver.vue';
+  import ErrorComponent from './../ErrorComp.vue';
   import axios from 'axios'
   export default {
   data() {
     return {
       items: [],
-      isActive:false
+      isActive:false,
+      error:null
     };
   },
   components: {
-    'my-component': upddriver
+    'my-component': upddriver,
+    ErrorComponent
   },
   methods: {
   activateComponent() {
       this.isActive = !this.isActive;
+  },
+  deleteItem(reqID) {
+    const formData = {
+      ID: reqID,
+    }
+    axios.post('http://localhost:8083/admin/dlt/driver', formData)
+      .then(
+        location.reload()
+      )
+      .catch(error => {
+        this.error = error
+      })
   },
     },
   created() {
@@ -44,7 +62,7 @@
         this.items = response.data;
       })
       .catch(error => {
-        console.error(error);
+        this.error = error
       });
     }
 
