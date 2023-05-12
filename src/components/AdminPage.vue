@@ -1,29 +1,42 @@
-
 <template>
     <div>
-      <h2>JSON Data</h2>
-      <ul>
-        <li v-for="data in jsonData" :key="data.id">
-          <p>ID: {{ data.id }}</p>
-          <p>Name: {{ data.name }}</p>
-          <p>Age: {{ data.age }}</p>
-        </li>
-      </ul>
+      <h2>auth</h2>
+      <input v-model="email" type="email" placeholder="email">
+      <input v-model="password" type="password" placeholder="password">
+      <button @click="submitForm()">Submit</button>
     </div>
-    <a href="http://localhost:8082/db/InnowiseTaxi/logs">mongo logs</a>
+    <p v-text="message"></p>
+    <a href="http://localhost:8082/db/InnowiseTaxi/logs">mongo logs</a>|
     <a href="http://localhost:3000/d/FDB061FMz/gin-application-metrics?orgId=1&refresh=5s">metrics</a>
   </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
-      jsonData: [
-        { id: 1, name: 'John', age: 28 },
-        { id: 2, name: 'Jane', age: 35 },
-        { id: 3, name: 'Bob', age: 42 },
-        { id: 4, name: 'Alice', age: 25 }
-      ]
+    name: '',
+    email: '',
+    message: ''
     }
+  },
+  methods: {
+  submitForm() {
+    const formData = {
+      email: this.email,
+      password: this.password
+    }
+    axios.post('http://localhost:8083/auth/signin', formData)
+      .then(response => {
+        console.log(response.data)
+        this.message = 'success!'
+        localStorage.setItem('token', response.data)
+      })
+      .catch(error => {
+        console.log(error)
+        this.message = 'error!'
+      })
+  }
   }
 }
+
 </script>

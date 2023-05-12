@@ -5,6 +5,9 @@ import TestComp from './components/TestComp.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import UserProfile from './components/UserProfile.vue'
 import AdminPage from './components/AdminPage.vue'
+import UserDashboard from './components/UserDashboard.vue'
+import OrderDashboard from './components/OrdersDashboard.vue'
+import DriverDashboard from './components/DriverDashboard.vue'
 
 const router = createRouter({
     routes: [
@@ -23,6 +26,18 @@ const router = createRouter({
           {
             path: '/admin',
             component: AdminPage
+          },
+          {
+            path: '/admin/userdashboard',
+            component: UserDashboard
+          },
+          {
+            path: '/admin/orderdashboard',
+            component: OrderDashboard
+          },
+          {
+            path: '/admin/driverdashboard',
+            component: DriverDashboard
           }
       ],
       history: createWebHistory()
