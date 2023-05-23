@@ -1,9 +1,11 @@
 <template>
     <div>
       <h2>auth</h2>
+      <div class="container">
       <input v-model="email" type="email" placeholder="email">
       <input v-model="password" type="password" placeholder="password">
       <button @click="submitForm()">Submit</button>
+    </div>
     </div>
     <p v-text="message"></p>
     <a href="http://localhost:8082/db/InnowiseTaxi/logs">mongo logs</a>|

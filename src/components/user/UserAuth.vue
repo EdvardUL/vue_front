@@ -1,9 +1,12 @@
 <template>
+      <NavBarUser></NavBarUser>
   <div>
-    <h2>auth</h2>
-    <input v-model="email" type="email" placeholder="email">
-    <input v-model="password" type="password" placeholder="password">
-    <button @click="submitForm()">Submit</button>
+    <h2>Authentication</h2>
+    <div class = "container">
+    <input v-model="email" class = "input" type="email" placeholder="email">
+    <input v-model="password" class = "input" type="password" placeholder="password">
+    <button class="auth-button" @click="submitForm()">Submit</button>
+  </div>
   </div>
   <p v-text="message"></p>
   <div v-if="errorLog">
@@ -48,6 +51,36 @@ submitForm() {
     )
 }
 }
+
 }
 
 </script>
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+.auth-button {
+  background-color: #ff0000; /* Red color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.auth-button:hover {
+  background-color: #cc0000; /* Darker red color on hover */
+}
+
+.auth-button:active {
+  background-color: #990000; /* Even darker red color when clicked */
+}
+
+</style>

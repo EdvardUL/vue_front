@@ -9,7 +9,7 @@
         TaxiType: {{ data.TaxiType }}
         Rating: {{ data.Rating }}
         <button @click="deleteItem(data.ID)">Delete</button>
-        <button @click="activateComponent()">Update</button>
+        <button @click="activateUpdateComponent()">Update</button>
         <my-component v-if="isActive" :ID="data.ID"></my-component>
         </p>
       </li>
@@ -37,7 +37,7 @@
     ErrorComponent
   },
   methods: {
-  activateComponent() {
+  activateUpdateComponent() {
       this.isActive = !this.isActive;
   },
   deleteItem(reqID) {
