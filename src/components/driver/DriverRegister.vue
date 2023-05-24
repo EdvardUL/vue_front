@@ -15,6 +15,12 @@
         class="input"
         type="password"
         placeholder="password" />
+      <select v-model="taxitype" class="input">
+        <option value="" disabled selected>taxi type</option>
+        <option value="Econom">Econom</option>
+        <option value="Comfort">Comfort</option>
+        <option value="Business">Business</option>
+      </select>
       <button class="auth-button" @click="submitForm()">Authenticate</button>
     </div>
   </div>
@@ -25,14 +31,15 @@
 </template>
 <script>
 import axios from "axios";
-import UserNotFound from "./UserNotFound.vue";
-import NavBarUser from "./NavBarUser.vue";
+import UserNotFound from "./DriverNotFound.vue";
+import NavBarUser from "./NavBarDriver.vue";
 export default {
   data() {
     return {
       name: "",
       email: "",
       message: "",
+      taxitype: "",
       errorLog: false,
     };
   },
@@ -48,13 +55,14 @@ export default {
         phonenumber: this.phonenumber,
         email: this.email,
         password: this.password,
+        taxitype: this.taxitype,
       };
       axios
-        .post("http://localhost:8084/auth/signup", formData)
+        .post("http://localhost:8085/auth/signup", formData)
         .then((response) => {
           this.errorLog = false;
           console.log(response);
-          this.$router.push("/user-auth");
+          this.$router.push("/driver-auth");
         })
         .catch((response) => {
           this.errorLog = true;

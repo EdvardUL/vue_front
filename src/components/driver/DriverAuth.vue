@@ -1,53 +1,57 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <input v-model="name" type="name" placeholder="name" />
-    <input v-model="phonenumber" type="phonenumber" placeholder="phonenumber" />
-    <input v-model="email" type="email" placeholder="email" />
-    <input v-model="password" type="text" placeholder="password" />
-    <button @click="submitForm()">Submit</button>
+    <h2>Authentication</h2>
+    <div class="container">
+      <input v-model="email" class="input" type="email" placeholder="email" />
+      <input
+        v-model="password"
+        class="input"
+        type="password"
+        placeholder="password" />
+      <button class="auth-button" @click="submitForm()">Submit</button>
+    </div>
   </div>
-  <div v-if="error">
-    <error-component :error="error" />
+  <p v-text="message"></p>
+  <div v-if="errorLog">
+    <DriverNotFound />
   </div>
 </template>
-
 <script>
 import axios from "axios";
-import ErrorComponent from "./../ErrorComp.vue";
+import DriverNotFound from "./DriverNotFound.vue";
 export default {
   data() {
     return {
       name: "",
-      phonenumber: "",
       email: "",
       message: "",
-      password: "",
-      error: "",
+      errorLog: false,
     };
   },
   components: {
-    ErrorComponent,
+    DriverNotFound,
   },
   methods: {
     submitForm() {
-      const user_id = localStorage.getItem("user_id");
+      this.errorLog = false;
       const formData = {
-        id: Number(user_id),
-        name: this.name,
-        phonenumber: this.phonenumber,
         email: this.email,
         password: this.password,
       };
-      console.log(formData);
       axios
-        .post("http://localhost:8084/users/update", formData)
+        .post("http://localhost:8085/auth/signin", formData)
         .then((response) => {
+          this.errorLog = false;
+          this.message = "success!";
           console.log(response);
-          location.reload();
+          localStorage.setItem("token_driver", response.data.token);
+          localStorage.setItem("driver_id", response.data.id);
+          this.$router.push("/driver");
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((response) => {
+          this.errorLog = true;
+          console.log(response);
         });
     },
   },

@@ -1,8 +1,8 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/order-taxi">Order taxi</router-link></li>
-      <li><router-link to="/user">Profile</router-link></li>
+      <li><router-link to="/order-taxi">Finish order</router-link></li>
+      <li><router-link to="/driver">Profile</router-link></li>
       <li v-if="isAuthenticated"><a href="#" @click="logout">Logout</a></li>
       <li v-else><router-link to="/user-auth">Login</router-link></li>
     </ul>
@@ -21,13 +21,13 @@ export default {
       // Perform logout logic
       // Set isAuthenticated to false and navigate to the login page
       this.isAuthenticated = false;
-      localStorage.removeItem("token_user");
-      localStorage.removeItem("user_id");
-      this.$router.push("/user-auth");
+      localStorage.removeItem("token_driver");
+      localStorage.removeItem("driver_id");
+      this.$router.push("/driver-auth");
     },
   },
   created() {
-    const token = localStorage.getItem("token_user");
+    const token = localStorage.getItem("token_driver");
     if (token != "") {
       this.isAuthenticated = true;
     }
@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 nav {
-  background-color: #000000;
+  background-color: #c70000;
   padding: 10px;
 }
 
@@ -53,7 +53,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #858585;
+  color: #c0c0c0;
 }
 
 a:hover {

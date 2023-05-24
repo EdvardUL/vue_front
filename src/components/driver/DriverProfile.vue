@@ -21,10 +21,14 @@
         <span class="label">Rating:</span>
         <span>{{ items.rating }}</span>
       </div>
+      <div class="detail-row">
+        <span class="label">Taxi type:</span>
+        <span>{{ items.taxitype }}</span>
+      </div>
     </div>
   </div>
   <div class="button-container">
-    <button @click="relocateToOrderCreation()">Order</button>
+    <button @click="relocateToOrderCreation()">Finish Order</button>
     <button @click="activateUpdateComponent()">Update</button>
     <button @click="activateDeleteComponent()">Delete</button>
     <button @click="relocateToOrders()">All orders</button>
@@ -39,11 +43,11 @@
 </template>
 
 <script>
-import DeleteUser from "./DeleteUser.vue";
+import DeleteUser from "./DeleteDriver.vue";
 import RateOrder from "./RateLastOrder.vue";
-import NavBar from "./NavBarUser.vue";
+import NavBar from "./NavBarDriver.vue";
 import ErrorComponent from "./../ErrorComp.vue";
-import UserUpdate from "./UserUpdate.vue";
+import UserUpdate from "./DriverUpdate.vue";
 import axios from "axios";
 export default {
   data() {
@@ -80,15 +84,15 @@ export default {
     },
   },
   created() {
-    const token = localStorage.getItem("token_user");
-    const user_id = localStorage.getItem("user_id");
+    const token = localStorage.getItem("token_driver");
+    const user_id = localStorage.getItem("driver_id");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const reqId = {
       ID: Number(user_id),
     };
     console.log(reqId);
     axios
-      .post("http://localhost:8084/users/retrieve", reqId)
+      .post("http://localhost:8085/drivers/retrieve", reqId)
       .then((response) => {
         console.log(response.data);
         this.items = response.data;

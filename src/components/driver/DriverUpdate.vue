@@ -1,11 +1,25 @@
 <template>
   <NavBarUser></NavBarUser>
-  <div>
-    <input v-model="name" type="name" placeholder="name" />
-    <input v-model="phonenumber" type="phonenumber" placeholder="phonenumber" />
-    <input v-model="email" type="email" placeholder="email" />
-    <input v-model="password" type="text" placeholder="password" />
-    <button @click="submitForm()">Submit</button>
+  <div class="container">
+    <input v-model="name" class="input" type="name" placeholder="name" />
+    <input
+      v-model="phonenumber"
+      class="input"
+      type="phonenumber"
+      placeholder="phonenumber" />
+    <input v-model="email" class="input" type="email" placeholder="email" />
+    <input
+      v-model="password"
+      class="input"
+      type="text"
+      placeholder="password" />
+    <select v-model="taxitype" class="input">
+      <option value="" disabled selected>taxi type</option>
+      <option value="Econom">Econom</option>
+      <option value="Comfort">Comfort</option>
+      <option value="Business">Business</option>
+    </select>
+    <button class="auth-button" @click="submitForm()">Submit</button>
   </div>
   <div v-if="error">
     <error-component :error="error" />
@@ -23,6 +37,7 @@ export default {
       email: "",
       message: "",
       password: "",
+      taxitype: "",
       error: "",
     };
   },
@@ -31,17 +46,18 @@ export default {
   },
   methods: {
     submitForm() {
-      const user_id = localStorage.getItem("user_id");
+      const user_id = localStorage.getItem("driver_id");
       const formData = {
         id: Number(user_id),
         name: this.name,
         phonenumber: this.phonenumber,
         email: this.email,
         password: this.password,
+        taxitype: this.taxitype,
       };
       console.log(formData);
       axios
-        .post("http://localhost:8084/users/update", formData)
+        .post("http://localhost:8085/drivers/update", formData)
         .then((response) => {
           console.log(response);
           location.reload();
