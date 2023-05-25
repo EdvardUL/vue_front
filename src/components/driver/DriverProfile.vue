@@ -2,7 +2,7 @@
   <nav-bar></nav-bar>
   <div class="horizontal-container">
     <div class="user-image">
-      <img src="path/to/user-image.jpg" alt="User Image" />
+      <img src="./../../assets/profile-icon-9.png" alt="User Image" />
     </div>
     <div class="user-details">
       <div class="detail-row">

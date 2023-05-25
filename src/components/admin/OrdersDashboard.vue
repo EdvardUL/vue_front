@@ -1,18 +1,32 @@
 <template>
     <div>
-    <ul>
-      <li v-for="data in items" :key="data.ID">
-        <p>
-        TaxiType: {{ data.TaxiType }}
-        Driver: {{ data.Driver }}
-        From: {{ data.From }}
-        To: {{ data.To }}
-        User: {{ data.User }}
-        Date: {{ data.Date }}
-        <button @click="deleteItem(data.ID)">Delete</button>
-        </p>
-      </li>
-    </ul>
+      <table class="two-colored-table">
+    <thead>
+      <tr>
+        <th>TaxiType</th>
+        <th>Driver</th>
+        <th>From</th>
+        <th>To</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="(item, index) in items"
+        :key="index"
+        :class="index % 2 === 0 ? 'even' : 'odd'">
+        <td>{{ item.TaxiType }}</td>
+        <td>{{ item.Driver }}</td>
+        <td>{{ item.From }}</td>
+        <td>{{ item.To }}</td>
+        <td>{{ item.User }}</td>
+        <td>{{ item.Date }}</td>
+        <td><button @click="deleteItem(item.ID)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
     </div>
     <div v-if="error">
       <error-component :error="error" />
@@ -50,7 +64,7 @@
   },
   },
   created() {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token_admin')
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     axios.get('http://localhost:8083/admin/allorders')
       .then(response => {
@@ -63,3 +77,28 @@
   }
 };
   </script>
+
+<style scoped>
+.two-colored-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr.even {
+  background-color: #ffffff;
+}
+
+tr.odd {
+  background-color: #f9f9f9;
+}
+</style>

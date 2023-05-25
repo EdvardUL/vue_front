@@ -5,6 +5,7 @@ import UserAuth from "./components/user/UserAuth.vue";
 import UserRegister from "./components/user/UserRegister.vue";
 import UserProfile from "./components/user/UserProfile.vue";
 import AdminAuth from "./components/admin/AdminAuth.vue";
+import AdminProfile from "./components/admin/AdminProfile.vue";
 import UserDashboard from "./components/admin/UserDashboard.vue";
 import OrderDashboard from "./components/admin/OrdersDashboard.vue";
 import DriverDashboard from "./components/admin/DriverDashboard.vue";
@@ -33,6 +34,10 @@ const router = createRouter({
       component: AdminAuth,
     },
     {
+      path: "/admin-profile",
+      component: AdminProfile,
+    },
+    {
       path: "/order-taxi",
       component: OrderTaxi,
     },
@@ -53,15 +58,15 @@ const router = createRouter({
       component: DriverProfile,
     },
     {
-      path: "/admin/userdashboard",
+      path: "/user-dashboard",
       component: UserDashboard,
     },
     {
-      path: "/admin/orderdashboard",
+      path: "/order-dashboard",
       component: OrderDashboard,
     },
     {
-      path: "/admin/driverdashboard",
+      path: "/driver-dashboard",
       component: DriverDashboard,
     },
   ],
