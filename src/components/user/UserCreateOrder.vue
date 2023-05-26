@@ -10,6 +10,11 @@
       <option value="Comfort">Comfort</option>
       <option value="Business">Business</option>
     </select>
+    <select v-model="payment" class="input">
+      <option value="" disabled selected>payment method</option>
+      <option value="Credit card">Credit card</option>
+      <option value="Cash">Cash</option>
+    </select>
     <button class="auth-button" @click="submitForm()">Submit</button>
   </div>
   <div v-if="isLoading">
@@ -42,6 +47,7 @@ export default {
       to: "",
       errorLog: false,
       isLoading: false,
+      payment:"",
     };
   },
   components: {
@@ -60,6 +66,7 @@ export default {
         taxitype: this.taxitype,
         from: this.from,
         to: this.to,
+        payment: this.payment,
       };
       console.log(formData);
       axios

@@ -6,7 +6,7 @@
         <th>TaxiType</th>
         <th>From</th>
         <th>To</th>
-        <th>User</th>
+        <th>Payment</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -18,7 +18,7 @@
         <td>{{ item.TaxiType }}</td>
         <td>{{ item.From }}</td>
         <td>{{ item.To }}</td>
-        <td>{{ item.User }}</td>
+        <td>{{ item.Payment }}</td>
         <td>{{ item.Date }}</td>
       </tr>
     </tbody>

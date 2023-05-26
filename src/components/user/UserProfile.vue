@@ -29,10 +29,10 @@
     <button @click="activateDeleteComponent()">Delete</button>
     <button @click="relocateToOrders()">All orders</button>
     <button @click="activateLastOrderRating()">Rate last order</button>
-    <div v-if="error">
+  </div>
+  <div v-if="error">
       <error-component :error="error" />
     </div>
-  </div>
   <upd v-if="isUpdActive"></upd>
   <rate-order v-if="isRateSystemActive"></rate-order>
   <delete-user v-if="isDltActive"></delete-user>
