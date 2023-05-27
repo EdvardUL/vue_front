@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>auth</h2>
+      <h2>Admin Authentication</h2>
       <div class="container">
       <input v-model="email"  class="input" type="email" placeholder="email">
       <input v-model="password"  class="input" type="password" placeholder="password">
@@ -9,8 +9,8 @@
     </div>
     <p v-text="message"></p>
     <div v-if="error">
-      <error-component :error="error" />
-    </div>
+    <error-component :error="error" />
+  </div>
   </template>
 <script>
 import axios from 'axios'

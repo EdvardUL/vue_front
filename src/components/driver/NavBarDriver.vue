@@ -5,6 +5,7 @@
       <li><router-link to="/driver">Profile</router-link></li>
       <li v-if="isAuthenticated"><a href="#" @click="logout">Logout</a></li>
       <li v-else><router-link to="/user-auth">Login</router-link></li>
+      <li ><router-link to="/driver-info">Info</router-link></li>
     </ul>
   </nav>
 </template>

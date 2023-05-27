@@ -6,7 +6,7 @@
         <th>TaxiType</th>
         <th>From</th>
         <th>To</th>
-        <th>User</th>
+        <th>Payment</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -18,7 +18,7 @@
         <td>{{ item.TaxiType }}</td>
         <td>{{ item.From }}</td>
         <td>{{ item.To }}</td>
-        <td>{{ item.User }}</td>
+        <td>{{ item.Payment }}</td>
         <td>{{ item.Date }}</td>
       </tr>
     </tbody>
@@ -30,7 +30,7 @@
 
 <script>
 import axios from "axios";
-import NavBar from "./NavBarUser.vue";
+import NavBar from "./NavBarDriver.vue";
 import ErrorComponent from "./../ErrorComp.vue";
 export default {
   data() {
@@ -45,14 +45,14 @@ export default {
     NavBar,
   },
   created() {
-    const token = localStorage.getItem("token_user");
+    const token = localStorage.getItem("token_driver");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const userID = localStorage.getItem("user_id");
+    const userID = localStorage.getItem("driver_id");
     const reqId = {
       id: Number(userID),
     };
     axios
-      .post("http://localhost:8084/users/allorders", reqId)
+      .post("http://localhost:8085/drivers/allorders", reqId)
       .then((response) => {
         this.items = response.data;
         console.log(response);

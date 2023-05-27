@@ -77,10 +77,32 @@ export default {
       this.isRateSystemActive = !this.isRateSystemActive;
     },
     relocateToOrders() {
-      this.$router.push("/user-orders");
+      this.$router.push("/driver-orders");
     },
     relocateToOrderCreation() {
-      this.$router.push("/order-taxi");
+      const token = localStorage.getItem("token_driver");
+    const user_id = localStorage.getItem("driver_id");
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const reqId = {
+      ID: Number(user_id),
+    };
+    console.log(reqId);
+    axios
+      .post("http://localhost:8085/drivers/finishorder", reqId)
+      .then((response) => {
+        console.log(response.data);
+        this.items = response.data;
+        console.log(this.items);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.error = error;
+        if (
+          String(error.response.data).includes("server error token is expired")
+        ) {
+          this.$router.push("/driver");
+        }
+      });
     },
   },
   created() {

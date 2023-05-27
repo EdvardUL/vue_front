@@ -1,7 +1,7 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <h2>Authentication</h2>
+    <h2>User Authentication</h2>
     <div class="container">
       <input v-model="email" class="input" type="email" placeholder="email" />
       <input
@@ -13,13 +13,13 @@
     </div>
   </div>
   <p v-text="message"></p>
-  <div v-if="errorLog">
-    <user-not-found />
+  <div v-if="error">
+    <error-component :error="error" />
   </div>
 </template>
 <script>
 import axios from "axios";
-import UserNotFound from "./UserNotFound.vue";
+import ErrorComponent from "./../ErrorComp.vue";
 export default {
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
     };
   },
   components: {
-    UserNotFound,
+    ErrorComponent,
   },
   methods: {
     submitForm() {

@@ -24,14 +24,14 @@ export default {
   },
   methods: {
     submitForm() {
-      const user_id = localStorage.getItem("user_id");
+      const user_id = localStorage.getItem("driver_id");
       const formData = {
         id: Number(user_id),
         rate: Number(this.rate),
       };
       console.log(formData);
       axios
-        .post("http://localhost:8084/users/rateorder", formData)
+        .post("http://localhost:8085/drivers/rateorder", formData)
         .then((response) => {
           console.log(response);
           location.reload();

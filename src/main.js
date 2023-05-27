@@ -12,7 +12,11 @@ import DriverDashboard from "./components/admin/DriverDashboard.vue";
 import UserOrders from "./components/user/UserOrders.vue";
 import OrderTaxi from "./components/user/UserCreateOrder.vue";
 import DriverAuth from "./components/driver/DriverAuth.vue";
+import DriverOrders from "./components/driver/DriverOrders.vue";
 import DriverProfile from "./components/driver/DriverProfile.vue";
+import DriverInfo from "./components/driver/DriverInfo.vue";
+import AdminInfo from "./components/admin/AdminInfo.vue";
+import UserInfo from "./components/user/UserInfo.vue";
 import DriverRegister from "./components/driver/DriverRegister.vue";
 
 const router = createRouter({
@@ -50,12 +54,28 @@ const router = createRouter({
       component: DriverAuth,
     },
     {
-      path: "/driver-reg",
+      path: "/driver-register",
       component: DriverRegister,
     },
     {
       path: "/driver",
       component: DriverProfile,
+    },
+    {
+      path: "/driver-info",
+      component: DriverInfo,
+    },
+    {
+      path: "/user-info",
+      component: UserInfo,
+    },
+    {
+      path: "/admin-info",
+      component: AdminInfo,
+    },
+    {
+      path: "/driver-orders",
+      component: DriverOrders,
     },
     {
       path: "/user-dashboard",
