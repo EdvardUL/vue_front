@@ -1,4 +1,5 @@
 <template>
+  <div><button @click="SortByFrom()">find by taxitype</button></div>
     <div>
       <table class="two-colored-table">
     <thead>
@@ -20,6 +21,7 @@
         <td>{{ item.Name }}</td>
         <td>{{ item.PhoneNumber }}</td>
         <td>{{ item.Email }}</td>
+        <td>{{ item.TaxiType }}</td>
         <td>{{ item.Rating }}</td>
         <td><button @click="deleteItem(item.ID)">Delete</button></td>
         <td><button @click="activateComponent()">Update</button></td>
@@ -64,6 +66,9 @@
       .catch(error => {
         this.error = error
       })
+  },
+  SortByFrom(){
+    return this.items.sort((a, b) => a.TaxiType.localeCompare(b.TaxiType));
   },
     },
   created() {
