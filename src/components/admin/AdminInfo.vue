@@ -4,8 +4,10 @@
       <p>Welcome to the documentation page.</p>
       <p>This is a paragraph explaining the purpose of the documentation.</p>
       <p>Here's another paragraph with more information.</p>
-      <p>You can do many things like delete profiles,user,drivers etc.</p>
-      <p>you r cool idk :/</p>
+      <p>You can do many things like : delete profiles,user,drivers</p>
+      <p>update profiles,user,drivers</p>
+      <p>sort and find drivers</p>
+      <p></p>
     </div>
   </template>
   

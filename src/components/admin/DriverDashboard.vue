@@ -1,5 +1,19 @@
 <template>
-  <div><button @click="SortByFrom()">find by taxitype</button></div>
+  <div><button @click="SortByFrom()">sort by taxitype</button></div>
+  <div>
+    <input type="text" v-model="reqname" placeholder="Enter field value">
+    <button @click="findElement">Find</button>
+    
+    <div v-if="foundElement">
+      <h3>Found Element:</h3>
+      <p>Name: {{ foundElement.Email }}</p>
+      <p>Field: {{ foundElement.PhoneNumber }}</p>
+      <!-- Display other properties as needed -->
+    </div>
+    <div v-else>
+      <p>No element found with the specified field value.</p>
+    </div>
+  </div>
     <div>
       <table class="two-colored-table">
     <thead>
@@ -44,7 +58,10 @@
     return {
       items: [],
       isActive:false,
-      error:null
+      error:null,
+      list:[],
+      reqname:'',
+      foundElement:null,
     };
   },
   components: {
@@ -54,6 +71,10 @@
   methods: {
   activateUpdateComponent() {
       this.isActive = !this.isActive;
+  },
+  findElement() {
+    console.log(this.reqname)
+      this.foundElement = this.items.find(element => element.Name === this.reqname);
   },
   deleteItem(reqID) {
     const formData = {
@@ -82,8 +103,8 @@
       .catch(error => {
         this.error = error
       });
-    }
-
+      this.list = this.items;
+    },
   }
   </script>
 
