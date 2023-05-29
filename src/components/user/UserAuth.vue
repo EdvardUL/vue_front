@@ -13,13 +13,13 @@
     </div>
   </div>
   <p v-text="message"></p>
-  <div v-if="error">
-    <error-component :error="error" />
+  <div v-if="errorLog">
+    <error-component/>
   </div>
 </template>
 <script>
 import axios from "axios";
-import ErrorComponent from "./../ErrorComp.vue";
+import ErrorComponent from "./UserNotFound.vue";
 export default {
   data() {
     return {
