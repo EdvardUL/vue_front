@@ -1,10 +1,10 @@
 <template>
     <div>
-      <input v-model="name" type="name" placeholder="name">
-      <input v-model="phonenumber" type="phonenumber" placeholder="phonenumber">
-      <input v-model="email" type="email" placeholder="email">
-      <input v-model="rating" type="rating" placeholder="rating">
-      <button @click="submitForm()">Submit</button>
+      <input v-model="name" type="name" placeholder="Имя">
+      <input v-model="phonenumber" type="phonenumber" placeholder="Номер телефона">
+      <input v-model="email" type="email" placeholder="Почта">
+      <input v-model="rating" type="rating" placeholder="Рейтинг">
+      <button @click="submitForm()">Отправить</button>
     </div>
     <div v-if="error">
       <error-component :error="error" />

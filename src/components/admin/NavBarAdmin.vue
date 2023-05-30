@@ -1,11 +1,10 @@
 <template>
     <nav>
       <ul>
-        <li><router-link to="/order-taxi">Order taxi</router-link></li>
-        <li><router-link to="/user">Profile</router-link></li>
-        <li v-if="isAuthenticated"><a href="#" @click="logout">Logout</a></li>
-        <li v-else><router-link to="/user-auth">Login</router-link></li>
-        <li><router-link to="/admin-info">Info</router-link></li>
+        <li><router-link to="/user">Профиль</router-link></li>
+        <li v-if="isAuthenticated"><a href="#" @click="logout">Выход</a></li>
+        <li v-else><router-link to="/user-auth">Войти</router-link></li>
+        <li><router-link to="/admin-info">Инфо</router-link></li>
       </ul>
     </nav>
   </template>
@@ -23,7 +22,7 @@
         // Set isAuthenticated to false and navigate to the login page
         this.isAuthenticated = false;
         localStorage.removeItem("token_admin");
-        this.$router.push("/user-auth");
+        this.$router.push("/");
       },
     },
     created() {

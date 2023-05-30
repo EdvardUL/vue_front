@@ -1,11 +1,10 @@
 <template>
     <NavBar></NavBar>
     <div class="button-container">
-      <button @click="relocateToUserDashboard()">User Dashboard</button>
-      <button @click="relocateToOrderDashboard()">Order Dashboard</button>
-      <button @click="relocateToDriverDashboard()">Driver Dashboard</button>
-      <a href="http://localhost:8082/db/InnowiseTaxi/logs">mongo logs</a>|
-      <a href="http://localhost:3000/d/FDB061FMz/gin-application-metrics?orgId=1&refresh=5s">metrics</a>
+      <button @click="relocateToUserDashboard()">Таблица Пользователей</button>
+      <button @click="relocateToOrderDashboard()">Таблица Заказов</button>
+      <button @click="relocateToDriverDashboard()">Таблица Водителей</button>
+      <a href="http://localhost:8082/db/InnowiseTaxi/logs">Логи</a>
       <div v-if="error">
         <error-component :error="error" />
       </div>

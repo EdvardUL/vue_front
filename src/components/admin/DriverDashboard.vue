@@ -1,28 +1,30 @@
 <template>
-  <div><button @click="SortByFrom()">sort by taxitype</button></div>
+  <div><button @click="SortByTaxiType()">Сортировка по типу такси</button>
+  <button @click="SortByName()">Сортировка по имени</button>
+  <button @click="SortByRating()">Сортировка по рейтингу</button></div>
   <div>
-    <input type="text" v-model="reqname" placeholder="Enter field value">
-    <button @click="findElement">Find</button>
+    <input class="input" type="text" v-model="reqname" placeholder="Имя водителя">
+    <button @click="findElement">Найти</button>
     
     <div v-if="foundElement">
-      <h3>Found Element:</h3>
-      <p>Name: {{ foundElement.Email }}</p>
-      <p>Field: {{ foundElement.PhoneNumber }}</p>
+      <h3>Найденый водитель:</h3>
+      <p>Почта: {{ foundElement.Email }}</p>
+      <p>Номер телефона: {{ foundElement.PhoneNumber }}</p>
       <!-- Display other properties as needed -->
     </div>
     <div v-else>
-      <p>No element found with the specified field value.</p>
+      <p>Нет совпадиний с данным именем.</p>
     </div>
   </div>
     <div>
       <table class="two-colored-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>PhoneNumber</th>
-        <th>Email</th>
-        <th>TaxiType</th>
-        <th>Rating</th>
+        <th>Имя</th>
+        <th>Номер телефона</th>
+        <th>Почта</th>
+        <th>Тип такси</th>
+        <th>Рейтинг</th>
         <th>-</th>
         <th>-</th>
       </tr>
@@ -37,20 +39,20 @@
         <td>{{ item.Email }}</td>
         <td>{{ item.TaxiType }}</td>
         <td>{{ item.Rating }}</td>
-        <td><button @click="deleteItem(item.ID)">Delete</button></td>
-        <td><button @click="activateComponent()">Update</button></td>
+        <td><button @click="deleteItem(item.ID)">Удалить</button></td>
+        <td><button @click="activateUpdateComponent(item.ID)">Обновить</button></td>
       </tr>
     </tbody>
   </table>
     </div>
-    <my-component v-if="isActive" :ID="data.ID"></my-component>
+    <upddriver v-if="isActive" :ID="reqID"></upddriver>
     <div v-if="error">
       <error-component :error="error" />
     </div>
   </template>
   
   <script>
-  import upddriver from './UpdateDriver.vue';
+  import Upddriver from './UpdateDriver.vue';
   import ErrorComponent from './../ErrorComp.vue';
   import axios from 'axios'
   export default {
@@ -62,15 +64,17 @@
       list:[],
       reqname:'',
       foundElement:null,
+      reqID:null,
     };
   },
   components: {
-    'my-component': upddriver,
+    Upddriver,
     ErrorComponent
   },
   methods: {
-  activateUpdateComponent() {
-      this.isActive = !this.isActive;
+  activateUpdateComponent(id) {
+    this.reqID = id;
+    this.isActive = !this.isActive;
   },
   findElement() {
     console.log(this.reqname)
@@ -88,8 +92,14 @@
         this.error = error
       })
   },
-  SortByFrom(){
+  SortByTaxiType(){
     return this.items.sort((a, b) => a.TaxiType.localeCompare(b.TaxiType));
+  },
+  SortByName(){
+    return this.items.sort((a, b) => a.Name.localeCompare(b.Name));
+  },
+  SortByRating(){
+    return this.items.sort((a, b) => b.Rating - a.Rating);
   },
     },
   created() {
@@ -109,6 +119,18 @@
   </script>
 
 <style scoped>
+  button {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
 .two-colored-table {
   width: 100%;
   border-collapse: collapse;

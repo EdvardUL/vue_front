@@ -1,25 +1,25 @@
 <template>
   <NavBarUser></NavBarUser>
   <div class="container">
-    <input v-model="name" class="input" type="name" placeholder="name" />
+    <input v-model="name" class="input" type="name" placeholder="Имя" />
     <input
       v-model="phonenumber"
       class="input"
       type="phonenumber"
-      placeholder="phonenumber" />
-    <input v-model="email" class="input" type="email" placeholder="email" />
+      placeholder="Номер телефона" />
+    <input v-model="email" class="input" type="email" placeholder="Почта" />
     <input
       v-model="password"
       class="input"
       type="text"
-      placeholder="password" />
+      placeholder="Пароль" />
     <select v-model="taxitype" class="input">
-      <option value="" disabled selected>taxi type</option>
-      <option value="Econom">Econom</option>
-      <option value="Comfort">Comfort</option>
-      <option value="Business">Business</option>
+      <option value="" disabled selected>Тип такси</option>
+      <option value="Econom">Эконом</option>
+      <option value="Comfort">Комфорт</option>
+      <option value="Business">Бизнесс</option>
     </select>
-    <button class="auth-button" @click="submitForm()">Submit</button>
+    <button class="auth-button" @click="submitForm()">Подтвердить</button>
   </div>
   <div v-if="error">
     <error-component :error="error" />

@@ -1,10 +1,10 @@
 <template>
     <div>
-      <h2>Admin Authentication</h2>
+      <h2>Авторизация Администратора</h2>
       <div class="container">
-      <input v-model="email"  class="input" type="email" placeholder="email">
-      <input v-model="password"  class="input" type="password" placeholder="password">
-      <button  class="auth-button" @click="submitForm()">Submit</button>
+      <input v-model="email"  class="input" type="email" placeholder="Почта">
+      <input v-model="password"  class="input" type="password" placeholder="пПроль">
+      <button  class="auth-button" @click="submitForm()">Войти</button>
     </div>
     </div>
     <p v-text="message"></p>

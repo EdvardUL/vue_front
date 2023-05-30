@@ -1,17 +1,16 @@
 <template>
-  <div><button @click="SortByTaxiType">sort by taxi type</button></div>
-  <div><button @click="SortByFrom">sort by start location</button></div>
+  <div><button @click="SortByTaxiType">Сортировка по типу такси</button></div>
+  <div><button @click="SortByFrom">Сортировка по месту отправки</button></div>
     <div>
       <table class="two-colored-table">
     <thead>
       <tr>
-        <td>id</td>
-        <th>TaxiType</th>
-        <th>Driver</th>
-        <th>From</th>
-        <th>To</th>
-        <th>User</th>
-        <th>Date</th>
+        <th>Такси</th>
+        <th>Водитель</th>
+        <th>Отправка</th>
+        <th>Прибытие</th>
+        <th>Пользователь</th>
+        <th>Дата</th>
         <th>-</th>
       </tr>
     </thead>
@@ -20,14 +19,13 @@
         v-for="(item, index) in items"
         :key="index"
         :class="index % 2 === 0 ? 'even' : 'odd'">
-        <td>{{ item.ID }}</td>
         <td>{{ item.TaxiType }}</td>
         <td>{{ item.Driver }}</td>
         <td>{{ item.From }}</td>
         <td>{{ item.To }}</td>
         <td>{{ item.User }}</td>
         <td>{{ item.Date }}</td>
-        <td><button @click="deleteItem(item.ID)">Delete</button></td>
+        <td><button @click="deleteItem(item.ID)">Удалить</button></td>
       </tr>
     </tbody>
   </table>

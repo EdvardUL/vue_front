@@ -1,7 +1,7 @@
 <template>
   <div class="user-not-found">
-    <h2>User not found</h2>
-    <p>The user you are looking for does not exist.</p>
+    <h2>Пользователь не найден</h2>
+    <p>Пользователь которого вы ищите не существует.</p>
   </div>
 </template>
 <style scoped>

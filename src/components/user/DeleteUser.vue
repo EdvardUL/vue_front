@@ -1,10 +1,10 @@
 <template>
   <div>
-    <button class="delete-button" @click="showAlert">Delete User</button>
+    <button class="delete-button" @click="showAlert">Удалить аккаунт</button>
     <div v-if="showConfirmation" class="alert">
-      <p>Are you sure you want to delete this user?</p>
-      <button @click="deleteUser" class="confirm-button">Confirm</button>
-      <button @click="cancelDelete" class="cancel-button">Cancel</button>
+      <p>вы уверены что хотите удалить аккаунт?</p>
+      <button @click="deleteUser" class="confirm-button">Подтвердить</button>
+      <button @click="cancelDelete" class="cancel-button">Закрыть</button>
     </div>
   </div>
 </template>

@@ -1,15 +1,15 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <h2>Driver Authentication</h2>
+    <h2>Авторизация Водителя</h2>
     <div class="container">
-      <input v-model="email" class="input" type="email" placeholder="email" />
+      <input v-model="email" class="input" type="email" placeholder="Почта" />
       <input
         v-model="password"
         class="input"
         type="password"
-        placeholder="password" />
-      <button class="auth-button" @click="submitForm()">Submit</button>
+        placeholder="Пароль" />
+      <button class="auth-button" @click="submitForm()">Войти</button>
     </div>
   </div>
   <p v-text="message"></p>
@@ -19,14 +19,14 @@
 </template>
 <script>
 import axios from "axios";
-import ErrorComponent from "./../ErrorComp.vue";
+import ErrorComponent from "./DriverNotFound.vue";
 export default {
   data() {
     return {
       name: "",
       email: "",
       message: "",
-      errorLog: false,
+      error: null,
     };
   },
   components: {
@@ -49,9 +49,9 @@ export default {
           localStorage.setItem("driver_id", response.data.id);
           this.$router.push("/driver");
         })
-        .catch((response) => {
-          this.errorLog = true;
-          console.log(response);
+        .catch((error) => {
+          this.error = error;
+          console.log(error);
         });
     },
   },

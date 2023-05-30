@@ -6,19 +6,19 @@
     </div>
     <div class="user-details">
       <div class="detail-row">
-        <span class="label">Name:</span>
+        <span class="label">Имя:</span>
         <span>{{ items.name }}</span>
       </div>
       <div class="detail-row">
-        <span class="label">PhoneNumber:</span>
+        <span class="label">Номер телефона:</span>
         <span>{{ items.phonenumber }}</span>
       </div>
       <div class="detail-row">
-        <span class="label">Email:</span>
+        <span class="label">Почта:</span>
         <span>{{ items.email }}</span>
       </div>
       <div class="detail-row">
-        <span class="label">Rating:</span>
+        <span class="label">Рейтинг:</span>
         <span>{{ items.rating }}</span>
       </div>
       <div class="detail-row">
@@ -28,11 +28,11 @@
     </div>
   </div>
   <div class="button-container">
-    <button @click="relocateToOrderCreation()">Finish Order</button>
-    <button @click="activateUpdateComponent()">Update</button>
-    <button @click="activateDeleteComponent()">Delete</button>
-    <button @click="relocateToOrders()">All orders</button>
-    <button @click="activateLastOrderRating()">Rate last order</button>
+    <button @click="relocateToOrderCreation()">Завершить поездку</button>
+    <button @click="activateUpdateComponent()">Обновить аккаунт</button>
+    <button @click="activateDeleteComponent()">Удалить аккаунт</button>
+    <button @click="relocateToOrders()">Список заказов</button>
+    <button @click="activateLastOrderRating()">оценить последний заказ</button>
     <div v-if="error">
       <error-component :error="error" />
     </div>

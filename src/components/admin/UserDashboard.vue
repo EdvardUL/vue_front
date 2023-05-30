@@ -3,10 +3,10 @@
       <table class="two-colored-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>PhoneNumber</th>
-        <th>Email</th>
-        <th>Rating</th>
+        <th>Имя</th>
+        <th>Номер телефона</th>
+        <th>Почта</th>
+        <th>Рейтинг</th>
         <th>-</th>
         <th>-</th>
       </tr>
@@ -20,8 +20,8 @@
         <td>{{ item.PhoneNumber }}</td>
         <td>{{ item.Email }}</td>
         <td>{{ item.Rating }}</td>
-        <td><button @click="deleteItem(item.ID)">Delete</button></td>
-        <td><button @click="activateComponent()">Update</button></td>
+        <td><button @click="deleteItem(item.ID)">Удалить</button></td>
+        <td><button @click="activateComponent()">Обновить</button></td>
       </tr>
     </tbody>
   </table>

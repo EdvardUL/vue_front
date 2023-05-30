@@ -1,38 +1,38 @@
 <template>
-  <NavBarUser></NavBarUser>
+  <NavBarDriver></NavBarDriver>
   <div>
-    <h2>User registration</h2>
+    <h2>Регистрация Водителя</h2>
     <div class="container">
-      <input v-model="name" class="input" type="email" placeholder="name" />
+      <input v-model="name" class="input" type="email" placeholder="Имя" />
       <input
         v-model="phonenumber"
         class="input"
         type="email"
         placeholder="phonenumber" />
-      <input v-model="email" class="input" type="email" placeholder="email" />
+      <input v-model="email" class="input" type="email" placeholder="Почта" />
       <input
         v-model="password"
         class="input"
         type="password"
-        placeholder="password" />
+        placeholder="Пароль" />
       <select v-model="taxitype" class="input">
-        <option value="" disabled selected>taxi type</option>
-        <option value="Econom">Econom</option>
-        <option value="Comfort">Comfort</option>
-        <option value="Business">Business</option>
+        <option value="" disabled selected>Тип такси</option>
+        <option value="Econom">Эконом</option>
+        <option value="Comfort">Комфорт</option>
+        <option value="Business">Бизнесс</option>
       </select>
-      <button class="auth-button" @click="submitForm()">Authenticate</button>
+      <button class="auth-button" @click="submitForm()">Зарегистрировать</button>
     </div>
   </div>
   <p v-text="message"></p>
-  <div v-if="errorLog">
-    <user-not-found />
+  <div v-if="error">
+    <error-component :error="error" />
   </div>
 </template>
 <script>
 import axios from "axios";
-import UserNotFound from "./DriverNotFound.vue";
-import NavBarUser from "./NavBarDriver.vue";
+import ErrorComponent from "./../ErrorComp.vue";
+import NavBarDriver from "./NavBarDriver.vue";
 export default {
   data() {
     return {
@@ -40,12 +40,12 @@ export default {
       email: "",
       message: "",
       taxitype: "",
-      errorLog: false,
+      error: '',
     };
   },
   components: {
-    NavBarUser,
-    UserNotFound,
+    ErrorComponent,
+    NavBarDriver,
   },
   methods: {
     submitForm() {
@@ -65,7 +65,7 @@ export default {
           this.$router.push("/driver-auth");
         })
         .catch((response) => {
-          this.errorLog = true;
+          this.error = response;
           console.log(response);
         });
     },

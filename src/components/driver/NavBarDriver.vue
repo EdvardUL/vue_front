@@ -1,11 +1,11 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/order-taxi">Finish order</router-link></li>
-      <li><router-link to="/driver">Profile</router-link></li>
-      <li v-if="isAuthenticated"><a href="#" @click="logout">Logout</a></li>
-      <li v-else><router-link to="/user-auth">Login</router-link></li>
-      <li ><router-link to="/driver-info">Info</router-link></li>
+      <li><router-link to="/order-taxi">Завершить заказ</router-link></li>
+      <li><router-link to="/driver">Профиль</router-link></li>
+      <li v-if="isAuthenticated"><a href="#" @click="logout">Выход</a></li>
+      <li v-else><router-link to="/user-auth">Войти</router-link></li>
+      <li ><router-link to="/driver-info">Инфо</router-link></li>
     </ul>
   </nav>
 </template>
