@@ -3,11 +3,11 @@
   <table class="two-colored-table">
     <thead>
       <tr>
-        <th>TaxiType</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Payment</th>
-        <th>Date</th>
+        <th>Тип такси</th>
+        <th>Отправка</th>
+        <th>Прибытие</th>
+        <th>Способ оплаты</th>
+        <th>Дата</th>
       </tr>
     </thead>
     <tbody>

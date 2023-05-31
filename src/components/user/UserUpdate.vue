@@ -1,10 +1,10 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <input v-model="name" type="name" placeholder="name" />
-    <input v-model="phonenumber" type="phonenumber" placeholder="phonenumber" />
-    <input v-model="email" type="email" placeholder="email" />
-    <input v-model="password" type="text" placeholder="password" />
+    <input v-model="name" type="name" placeholder=""/>
+    <input v-model="phonenumber" type="phonenumber" placeholder="Номер телефона" />
+    <input v-model="email" type="email" placeholder="Почта" />
+    <input v-model="password" type="text" placeholder="Пароль" />
     <button @click="submitForm()">Submit</button>
   </div>
   <div v-if="error">
@@ -16,21 +16,25 @@
 import axios from "axios";
 import ErrorComponent from "./../ErrorComp.vue";
 export default {
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      name: "",
-      phonenumber: "",
-      email: "",
-      message: "",
-      password: "",
-      error: "",
+      name: this.data.name,
+      phonenumber: this.data.phonenumber,
+      email: this.data.email,
+      password: this.data.password
     };
   },
   components: {
     ErrorComponent,
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       const user_id = localStorage.getItem("user_id");
       const formData = {
         id: Number(user_id),
@@ -44,7 +48,6 @@ export default {
         .post("http://localhost:8084/users/update", formData)
         .then((response) => {
           console.log(response);
-          location.reload();
         })
         .catch((error) => {
           console.log(error);

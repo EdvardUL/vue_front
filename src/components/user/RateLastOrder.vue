@@ -1,8 +1,8 @@
 <template>
   <NavBarUser></NavBarUser>
   <div class="container">
-    <input class="input" v-model="rate" type="number" placeholder="rating" />
-    <button class="auth-button" @click="submitForm()">Submit</button>
+    <input class="input" v-model="rate" type="number" placeholder="Рейтинг" />
+    <button class="auth-button" @click="submitForm()">Подтвердить</button>
   </div>
   <div v-if="error">
     <error-component :error="error" />

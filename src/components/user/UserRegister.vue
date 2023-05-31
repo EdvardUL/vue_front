@@ -1,21 +1,21 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <h2>User registration</h2>
+    <h2>Регистрация пользователя</h2>
     <div class="container">
-      <input v-model="name" class="input" type="email" placeholder="name" />
+      <input v-model="name" class="input" type="email" placeholder="Имя" />
       <input
         v-model="phonenumber"
         class="input"
         type="email"
-        placeholder="phonenumber" />
-      <input v-model="email" class="input" type="email" placeholder="email" />
+        placeholder="Номер телефона" />
+      <input v-model="email" class="input" type="email" placeholder="Почта" />
       <input
         v-model="password"
         class="input"
         type="password"
-        placeholder="password" />
-      <button class="auth-button" @click="submitForm()">Authenticate</button>
+        placeholder="Пароль" />
+      <button class="auth-button" @click="submitForm()">Зарегистрироваться</button>
     </div>
   </div>
   <p v-text="message"></p>

@@ -1,21 +1,21 @@
 <template>
   <NavBarUser></NavBarUser>
   <div class="container">
-    <h2>Order menu</h2>
-    <input v-model="from" class="input" type="from" placeholder="from" />
-    <input v-model="to" class="input" type="to" placeholder="to" />
+    <h2>Меню заказа</h2>
+    <input v-model="from" class="input" type="from" placeholder="Отправка" />
+    <input v-model="to" class="input" type="to" placeholder="Прибытие" />
     <select v-model="taxitype" class="input">
-      <option value="" disabled selected>taxi type</option>
-      <option value="Econom">Econom</option>
-      <option value="Comfort">Comfort</option>
-      <option value="Business">Business</option>
+      <option value="" disabled selected>тип такси</option>
+      <option value="Econom">Эконом</option>
+      <option value="Comfort">Комфорт</option>
+      <option value="Business">Бизнес</option>
     </select>
     <select v-model="payment" class="input">
-      <option value="" disabled selected>payment method</option>
-      <option value="Credit card">Credit card</option>
-      <option value="Cash">Cash</option>
+      <option value="" disabled selected>способ оплаты</option>
+      <option value="Credit card">Банковская карта</option>
+      <option value="Cash">Наличные</option>
     </select>
-    <button class="auth-button" @click="submitForm()">Submit</button>
+    <button class="auth-button" @click="submitForm()">Отправить</button>
   </div>
   <div v-if="isLoading">
     <div class="loadingio-spinner-magnify-vs28tos9p0a">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <p>Loading...</p>
+    <p>Поиск водителя...</p>
   </div>
   <p v-text="message"></p>
   <div v-if="error">

@@ -1,15 +1,15 @@
 <template>
   <NavBarUser></NavBarUser>
   <div>
-    <h2>User Authentication</h2>
+    <h2>Авторизация пользователя</h2>
     <div class="container">
-      <input v-model="email" class="input" type="email" placeholder="email" />
+      <input v-model="email" class="input" type="email" placeholder="почта" />
       <input
         v-model="password"
         class="input"
         type="password"
-        placeholder="password" />
-      <button class="auth-button" @click="submitForm()">Submit</button>
+        placeholder="пароль" />
+      <button class="auth-button" @click="submitForm()">Войти</button>
     </div>
   </div>
   <p v-text="message"></p>
