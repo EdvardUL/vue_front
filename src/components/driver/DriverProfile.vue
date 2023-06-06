@@ -37,7 +37,7 @@
       <error-component :error="error" />
     </div>
   </div>
-  <upd v-if="isUpdActive"></upd>
+  <upd v-if="isUpdActive" :data = "items"></upd>
   <rate-order v-if="isRateSystemActive"></rate-order>
   <delete-user v-if="isDltActive"></delete-user>
 </template>

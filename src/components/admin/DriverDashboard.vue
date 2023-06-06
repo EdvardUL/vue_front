@@ -40,12 +40,12 @@
         <td>{{ item.TaxiType }}</td>
         <td>{{ item.Rating }}</td>
         <td><button @click="deleteItem(item.ID)">Удалить</button></td>
-        <td><button @click="activateUpdateComponent(item.ID)">Обновить</button></td>
+        <td><button @click="activateUpdateComponent(item.ID,index)">Обновить</button></td>
       </tr>
     </tbody>
   </table>
     </div>
-    <upddriver v-if="isActive" :ID="reqID"></upddriver>
+    <upddriver v-if="isActive" :data = "item"></upddriver>
     <div v-if="error">
       <error-component :error="error" />
     </div>
@@ -59,6 +59,7 @@
   data() {
     return {
       items: [],
+      item:[],
       isActive:false,
       error:null,
       list:[],
@@ -72,8 +73,9 @@
     ErrorComponent
   },
   methods: {
-  activateUpdateComponent(id) {
-    this.reqID = id;
+  activateUpdateComponent(id,index) {
+    this.item = this.items[index];
+    this.item.ID = id;
     this.isActive = !this.isActive;
   },
   findElement() {

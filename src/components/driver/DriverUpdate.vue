@@ -30,14 +30,20 @@
 import axios from "axios";
 import ErrorComponent from "./../ErrorComp.vue";
 export default {
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      name: "",
-      phonenumber: "",
-      email: "",
+      name: this.data.name,
+      phonenumber: this.data.phonenumber,
+      email: this.data.email,
       message: "",
       password: "",
-      taxitype: "",
+      taxitype: this.data.taxitype,
       error: "",
     };
   },
